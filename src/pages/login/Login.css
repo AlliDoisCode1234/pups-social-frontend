@@ -1,0 +1,88 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f9fcf2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__wrapper{
+    width: 70%;
+    height: 70%;
+    background-color: #00b373;
+    display: flex;
+}
+
+.login__wrapperLeft, .login__wrapperRight {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login__wrapperLeftLogo{
+    object-fit: contain;
+    height: 500px;
+    width: 500px;
+    background-color: #f9fcf2;
+}
+
+.login__wrapperLeftDesc{
+    background-color: #f9fcf2;
+    font-weight: 300;
+    font-size: 25px;
+    padding: 0 5% 15% 10%;
+}
+
+.login__wrapperRightBox{
+    height: 300px;
+    padding: 20px;
+    background-color: white;
+    margin: 0 3%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login__wrapperRightBoxLoginInput{
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+.login__wrapperRightBoxLoginInput:focus {
+    outline: none;
+}
+
+.login__wrapperRightBoxButton {
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: #00b373;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.login__wrapperRightBoxLoginForgot {
+    text-align: center;
+    color:#00b373;
+}
+.login__wrapperRightBoxRegisterButton{
+    width: 60%;
+    align-self: center;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: #0ebde9;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+
+}

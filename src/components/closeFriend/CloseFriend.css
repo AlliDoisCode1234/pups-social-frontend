@@ -1,0 +1,14 @@
+.closeFriend__friend{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+
+.closeFriend__friendImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
