@@ -1,6 +1,6 @@
 .rightbar {
-  flex: 3.333;
-  padding-left: 20px;
+  flex: 3.5;
+  
 }
 
 .rightbar__wrapper {
@@ -40,7 +40,7 @@
 }
 
 .rightbar__profileRightbarTitle {
-  font-style: 180px;
+  font-style: 18px;
   font-weight: 500;
   margin-bottom: 10px;
 }

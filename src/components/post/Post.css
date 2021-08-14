@@ -16,13 +16,18 @@
   justify-content: space-between;
 }
 
+.post__postTopLeft{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .post__postTopLeftImg {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
   
-
 }
 
 .post__postTopLeftUsername {
@@ -36,7 +41,7 @@
 }
 
 .post__postCenter {
-  margin: 20px;
+  margin: 20px 0;
 }
 
 .post__postCenterImg {
