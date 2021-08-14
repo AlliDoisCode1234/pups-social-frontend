@@ -10,7 +10,7 @@ function App() {
     // BEM naming convention
     <div className="app">
       
-      <Home />
+      <Home/>
     </div>
   );
 }
@@ -18,4 +18,3 @@ function App() {
 export default App;
 
 
-// 1:42:20

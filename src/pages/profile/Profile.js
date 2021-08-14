@@ -1,6 +1,7 @@
 import React from 'react'
 import Feed from '../../components/feed/Feed'
-import Rightbar from '../../components/rightbar/Rightbar'
+
+import ProfileRightbar from '../../components/profileRightbar/ProfileRightbar'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Topbar from '../../components/topbar/Topbar'
 
@@ -26,7 +27,7 @@ const Profile = () => {
                     </div>
                     <div className="profile__rightBottom">
                         <Feed />
-                        <Rightbar profile/>
+                        <ProfileRightbar />
                     </div>
                 </div>
             </div>

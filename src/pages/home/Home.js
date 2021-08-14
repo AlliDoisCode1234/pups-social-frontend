@@ -1,19 +1,20 @@
 import Feed from '../../components/feed/Feed'
+import HomeRightbar from '../../components/homeRightbar/HomeRightbar'
 import Sidebar from '../../components/sidebar/Sidebar'
-import Rightbar from '../../components/rightbar/Rightbar'
+
 import Topbar from '../../components/topbar/Topbar'
 import './Home.css'
 
 const Home = () => {
     return (
-        <>
+        <div>
             <Topbar />
-            <div className="home__Container">
+            <div className="home__container">
                 <Sidebar />
                 <Feed />
-                <Rightbar />
+                <HomeRightbar />
             </div>
-        </>
+        </div>
     )
 }
 
