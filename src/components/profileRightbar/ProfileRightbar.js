@@ -9,6 +9,7 @@ import Online from '../online/Online'
     
 
     const ProfileRightbar = () => {
+        const PF = process.env.REACT_APP_PUBLIC_FOLDER;
         return (
             <div className="profileRightbar">
                 <div className="profileRightbar__wrapper">
@@ -30,27 +31,27 @@ import Online from '../online/Online'
                     <h4 className="profileRightbar__profileprofileRightbarTitle">User friends</h4>
                     <div className="profileRightbar__profileprofileRightbarFollowings">
                         <div className="profileRightbar__profileprofileRightbarFollowing">
-                            <img src="assets/person/1.jpeg" alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
+                            <img src={`${PF}person/1.jpeg`} alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
                             <span className="profileRightbar__profileprofileRightbarFollowingName">John Carter</span>
                         </div>
                         <div className="profileRightbar__profileprofileRightbarFollowing">
-                            <img src="assets/person/2.jpeg" alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
+                            <img src={`${PF}person/2.jpeg`} alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
                             <span className="profileRightbar__profileprofileRightbarFollowingName">John Carter</span>
                         </div>
                         <div className="profileRightbar__profileprofileRightbarFollowing">
-                            <img src="assets/person/3.jpeg" alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
+                            <img src={`${PF}person/3.jpeg`} alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
                             <span className="profileRightbar__profileprofileRightbarFollowingName">John Carter</span>
                         </div>
                         <div className="profileRightbar__profileprofileRightbarFollowing">
-                            <img src="assets/person/4.jpeg" alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
+                            <img src={`${PF}person/4.jpeg`} alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
                             <span className="profileRightbar__profileprofileRightbarFollowingName">John Carter</span>
                         </div>
                         <div className="profileRightbar__profileprofileRightbarFollowing">
-                            <img src="assets/person/5.jpeg" alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
+                            <img src={`${PF}person/5.jpeg`} alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
                             <span className="profileRightbar__profileprofileRightbarFollowingName">John Carter</span>
                         </div>
                         <div className="profileRightbar__profileprofileRightbarFollowing">
-                            <img src="assets/person/6.jpeg" alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
+                            <img src={`${PF}person/6.jpeg`} alt="" className="profileRightbar__profileprofileRightbarFollowingImg" />
                             <span className="profileRightbar__profileprofileRightbarFollowingName">John Carter</span>
                         </div>
                     </div>

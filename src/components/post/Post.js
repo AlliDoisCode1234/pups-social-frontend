@@ -1,12 +1,24 @@
-import React from 'react'
+import {useEffect, useState} from 'react'
 import './Post.css'
 import { MoreVert } from "@material-ui/icons"
-import { Users } from "../../dummyData"
-import { useState } from "react"
+import axios from "axios"
+
 
 const Post = ({post}) => {
-    const [like, setLike] = useState(post.like)
+    const [like, setLike] = useState(post.likes.length)
     const [isLiked, setIsLiked] = useState(false)
+    const [user, setUser] = useState({})
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+
+    useEffect(() => {
+        const fetchUser = async () =>  {
+            const res = await axios.get(`users/${post.userId}`)
+            setUser(res.data)
+        }
+        fetchUser()
+    }, [])
+
 
     const likeHandler = () => {
         setLike(isLiked ? like-1 : like+1) 
@@ -18,8 +30,8 @@ const Post = ({post}) => {
             <div className="post__wrapper">
                 <div className="post__postTop">
                     <div className="post__postTopLeft">
-                        <img src={Users.filter(u=>u.id === post.userId)[0].profilePicture} alt="" className="post__postTopLeftImg" />
-                        <span className="post__postTopLeftUsername">{Users.filter(u=>u.id === post.userId)[0].username}</span>
+                        <img src={user.profilePicture || PF+"person/noAvatar.png"} alt="" className="post__postTopLeftImg" />
+                        <span className="post__postTopLeftUsername">{user.username}</span>
                         <span className="post__postTopLeftPostDate">{post.date}</span>
                     </div>
                     <div className="post__postTopRight">
@@ -28,12 +40,12 @@ const Post = ({post}) => {
                 </div>
                 <div className="post__postCenter">
                     <span className="post__postCenterText">{post?.desc}</span>
-                    <img src={post.photo} alt="" className="post__postCenterImg" />
+                    <img src={PF+post.img} alt="" className="post__postCenterImg" />
                 </div>
                 <div className="post__postBottom">
                     <div className="post__bottomLeft">
-                        <img src="assets/like.png" alt="" className="post__bottomLeftIcon" onClick={likeHandler} />
-                        <img src="assets/heart.png" alt="" className="post__bottomLeftIcon" onClick={likeHandler} />
+                        <img src={`${PF}like.png`} alt="" className="post__bottomLeftIcon" onClick={likeHandler} />
+                        <img src={`${PF}heart.png`} alt="" className="post__bottomLeftIcon" onClick={likeHandler} />
                         <spn className="post__bottomLeftLikeCounter">{like} people like it</spn>
                     </div>
                     <div className="post__bottomRight">

@@ -24,7 +24,7 @@
 .login__wrapperLeftLogo{
     object-fit: contain;
     height: 500px;
-    width: 500px;
+    width: 100%;
     background-color: #f9fcf2;
 }
 
