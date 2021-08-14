@@ -1,7 +1,9 @@
+import React from 'react';
 import {useEffect, useState} from 'react'
 import './Post.css'
 import { MoreVert } from "@material-ui/icons"
 import axios from "axios"
+
 
 
 const Post = ({post}) => {
@@ -32,14 +34,18 @@ const Post = ({post}) => {
                     <div className="post__postTopLeft">
                         <img src={user.profilePicture || PF+"person/noAvatar.png"} alt="" className="post__postTopLeftImg" />
                         <span className="post__postTopLeftUsername">{user.username}</span>
-                        <span className="post__postTopLeftPostDate">{post.date}</span>
+                        {/* <TimeAgo className="post__postTopLeftPostDate" date={post.createdAt} /> */}
+                        {/* <TimeAgo className="post__postTopLeftPostDate" date="Aug 29, 2014" /> */}
+                        
+
+                        {/* <span className="post__postTopLeftPostDate">{post.date}</span> */}
                     </div>
                     <div className="post__postTopRight">
                         <MoreVert />
                     </div>
                 </div>
                 <div className="post__postCenter">
-                    <span className="post__postCenterText">{post?.desc}</span>
+                    <span className="post__postCenterText">{post.desc}</span>
                     <img src={PF+post.img} alt="" className="post__postCenterImg" />
                 </div>
                 <div className="post__postBottom">

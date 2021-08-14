@@ -1,3 +1,4 @@
+import React from "react"
 import Feed from '../../components/feed/Feed'
 import HomeRightbar from '../../components/homeRightbar/HomeRightbar'
 import Sidebar from '../../components/sidebar/Sidebar'
