@@ -3,6 +3,8 @@ import {useEffect, useState} from 'react'
 import './Post.css'
 import { MoreVert } from "@material-ui/icons"
 import axios from "axios"
+import {format} from "timeago.js"
+import { Link } from 'react-router-dom';
 
 
 
@@ -19,7 +21,7 @@ const Post = ({post}) => {
             setUser(res.data)
         }
         fetchUser()
-    }, [])
+    }, [post.userId])
 
 
     const likeHandler = () => {
@@ -32,13 +34,11 @@ const Post = ({post}) => {
             <div className="post__wrapper">
                 <div className="post__postTop">
                     <div className="post__postTopLeft">
-                        <img src={user.profilePicture || PF+"person/noAvatar.png"} alt="" className="post__postTopLeftImg" />
-                        <span className="post__postTopLeftUsername">{user.username}</span>
-                        {/* <TimeAgo className="post__postTopLeftPostDate" date={post.createdAt} /> */}
-                        {/* <TimeAgo className="post__postTopLeftPostDate" date="Aug 29, 2014" /> */}
-                        
-
-                        {/* <span className="post__postTopLeftPostDate">{post.date}</span> */}
+                        <Link to={`profile/${user.username}`}>
+                            <img src={user.profilePicture || PF+"person/noAvatar.png"} alt="" className="post__postTopLeftImg" />
+                        </Link>
+                         <span className="post__postTopLeftUsername">{user.username}</span>
+                         <span className="post__postTopLeftPostDate">{format(post.createdAt)}</span>
                     </div>
                     <div className="post__postTopRight">
                         <MoreVert />
@@ -52,10 +52,10 @@ const Post = ({post}) => {
                     <div className="post__bottomLeft">
                         <img src={`${PF}like.png`} alt="" className="post__bottomLeftIcon" onClick={likeHandler} />
                         <img src={`${PF}heart.png`} alt="" className="post__bottomLeftIcon" onClick={likeHandler} />
-                        <spn className="post__bottomLeftLikeCounter">{like} people like it</spn>
+                        <span className="post__bottomLeftLikeCounter">{like} people like it</span>
                     </div>
                     <div className="post__bottomRight">
-                        <snap className="post__bottomRightCommentText">{post.comment} comments</snap>
+                        <span className="post__bottomRightCommentText">{post.comment} comments</span>
                     </div>
                 </div>
             </div>
