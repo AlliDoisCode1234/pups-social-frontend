@@ -1,6 +1,7 @@
 import React from "react"
 import Feed from '../../components/feed/Feed'
-import HomeRightbar from '../../components/homeRightbar/HomeRightbar'
+import Rightbar from "../../components/Rightbar/Rightbar"
+
 import Sidebar from '../../components/sidebar/Sidebar'
 
 import Topbar from '../../components/topbar/Topbar'
@@ -13,7 +14,7 @@ const Home = () => {
             <div className="home__container">
                 <Sidebar />
                 <Feed />
-                <HomeRightbar />
+                <Rightbar />
             </div>
         </div>
     )

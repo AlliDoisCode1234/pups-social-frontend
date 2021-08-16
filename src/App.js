@@ -37,4 +37,4 @@ function App() {
 export default App;
 
 
-// 33:11 - 35:00 - issue with rendering profile by username
+// 51:00
