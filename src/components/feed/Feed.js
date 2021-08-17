@@ -18,8 +18,7 @@ const Feed = ({ username }) => {
             ? await axios.get("/posts/profile/" + username) 
             : await axios.get("posts/timeline/" + user._id)
             
-            console.log(res)
-            console.log(res.data)
+           
             setPosts(res.data)
         }
         fetchPosts()
