@@ -7,7 +7,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
@@ -43,4 +42,4 @@ function App() {
 export default App;
 
 
-// 56:38
+// 1:41:34

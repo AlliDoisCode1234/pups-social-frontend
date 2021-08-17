@@ -36,7 +36,7 @@ const Profile = () => {
 
                             />
                             <img 
-                                src={user.coverPicture || PF+"person/noAvatar.png"} 
+                                src={user.profilePicture || PF+"person/noAvatar.png"} 
                                 alt="" 
                                 className="profile__rightTopUserImg" 
                                 
