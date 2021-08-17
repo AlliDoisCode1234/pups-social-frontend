@@ -1,15 +1,33 @@
 import React, { useRef } from 'react'
 import './Register.css'
+import { useHistory } from "react-router"
+import axios from "axios"
 
 const Register = () => {
     const username = useRef()
     const email = useRef()
     const password = useRef()
     const passwordAgain = useRef()
+    const history = useHistory()
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         e.preventDefault();
 
+        if(passwordAgain.current.value !== password.current.value) {
+            passwordAgain.current.setCustomValidity("passwords don't match")
+        } else {
+            const user = {
+                username: username.current.value,
+                email: email.current.value,
+                password: password.current.value,
+            };
+            try {
+                await axios.post("/auth/register", user);
+                history.push("/login")
+            } catch(err){
+                console.log(err)
+            }
+        }
     }
 
 
@@ -23,15 +41,38 @@ const Register = () => {
                     <span className="register__wrapperLeftDesc">Connect with Puppies all around the world on the Pups app.</span>
                 </div>
                 <div className="register__wrapperRight">
-                    <div className="register__wrapperRightBox">
-                        <input placeholder="Username" ref={username} type="text" className="register__wrapperRightBoxRegisterInput" />
-                        <input placeholder="Email" ref={email} type="email" className="register__wrapperRightBoxRegisterInput" />
-                        <input placeholder="Password" ref={password} type="text" className="register__wrapperRightBoxRegisterInput" />
-                        <input placeholder="Password Again" ref={passwordAgain} type="text" className="register__wrapperRightBoxRegisterInput" />
-                        <button className="register__wrapperRightBoxButton">Sign Up</button>
+                    <form className="register__wrapperRightBox" onSubmit={handleClick}>
+                        <input 
+                            placeholder="Username" 
+                            ref={username} 
+                            required
+                            type="text" 
+                            className="register__wrapperRightBoxRegisterInput"     
+                        />
+                        <input 
+                            placeholder="Email" 
+                            ref={email} type="email" 
+                            required
+                            className="register__wrapperRightBoxRegisterInput" 
+                        />
+                        <input 
+                            placeholder="Password" 
+                            ref={password} 
+                            type="password"
+                            required
+                            minLength="6" 
+                            className="register__wrapperRightBoxRegisterInput" 
+                        />
+                        <input 
+                            placeholder="Password Again" 
+                            ref={passwordAgain} 
+                            type="password" 
+                            className="register__wrapperRightBoxRegisterInput" 
+                        />
+                        <button className="register__wrapperRightBoxButton" type="submit" >Sign Up</button>
                         
                         <button className="register__wrapperRightBoxRegisterButton">Log into Account</button>
-                    </div>
+                    </form>
                 </div>
             </div>
             
