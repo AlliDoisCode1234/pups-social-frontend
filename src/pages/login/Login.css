@@ -58,6 +58,14 @@
     outline: none;
 }
 
+.login__wrapperRightBoxLoginInput:disabled{
+    cursor: not-allowed;
+}
+
+.login__wrapperRightBoxRegisterButton:focus {
+    outline: none;
+}
+
 .login__wrapperRightBoxButton {
     height: 50px;
     border-radius: 10px;
@@ -73,6 +81,7 @@
     text-align: center;
     color:#00b373;
 }
+
 .login__wrapperRightBoxRegisterButton{
     width: 60%;
     align-self: center;

@@ -29,8 +29,18 @@ const Profile = () => {
                 <div className="profile__right">
                     <div className="profile__rightTop">
                         <div className="profile__rightTopCover">
-                            <img src={`${PF}post/3.jpeg`}alt="" className="profile__rightTopCoverImg" />
-                            <img src={`${PF}person/7.jpeg`} alt="" className="profile__rightTopUserImg" />
+                            <img 
+                                src={user.coverPicture || PF+"person/noCover.png"} 
+                                alt="" 
+                                className="profile__rightTopCoverImg" 
+
+                            />
+                            <img 
+                                src={user.coverPicture || PF+"person/noAvatar.png"} 
+                                alt="" 
+                                className="profile__rightTopUserImg" 
+                                
+                            />
                         </div>
                         <div className="profile__rightTopInfo">
                             <h4 className="profile_rightTopInfoName">{user.username}</h4>
@@ -40,7 +50,7 @@ const Profile = () => {
                     </div>
                     <div className="profile__rightBottom">
                         <Feed username={username}/>
-                        <Rightbar profile/>
+                        <Rightbar user={user}/>
                     </div>
                 </div>
             </div>
