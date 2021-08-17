@@ -3,7 +3,7 @@ import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
     user: {
-        _id: "6107ba17e559768e547f3b2c",
+        _id: "6107ba0de559768e547f3b2a",
         followers: [],
         followings: [],
         isAdmin: false,
@@ -13,6 +13,7 @@ const INITIAL_STATE = {
         city: "Boston, MA",
         from: "United States",
         relationship: "2",
+        profilePicture: "/person/1.jpeg",
     },
     isFetching: false,
     error: false

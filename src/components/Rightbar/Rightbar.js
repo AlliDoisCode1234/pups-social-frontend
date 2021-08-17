@@ -1,13 +1,59 @@
-import React from 'react'
+import React, {useContext, useEffect, useState } from 'react'
 import "./Rightbar.css"
 import { Users } from "../../dummyData"
 import Online from '../online/Online'
-
+import { AuthContext } from '../../context/AuthContext';
+import { Add, Remove } from "@material-ui/icons";
+import { Link } from "react-router-dom";
+import axios from "axios"
 
 
 
     
 export default function Rightbar({ user }) {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const [friends, setFriends] = useState([]);
+    const { user: currentUser, dispatch } = useContext(AuthContext);
+    const [followed, setFollowed] = useState(
+        currentUser.followings.includes(user?.id)
+    );
+    // const [followed, setFollowed] = useState(false)
+    
+
+    useEffect(() => {
+        const getFriends = async () => {
+            try {
+                const friendList = await axios.get("/users/friends/" + user._id);
+                setFriends(friendList.data);
+            } catch(err){
+                console.log(err)
+            }
+        };
+        getFriends();
+    }, [user._id])
+
+
+    const handleClick = async () => {
+        try{
+            if (followed) {
+                await axios.put(`/users/${user._id}/unfollow`, {
+                    userId: currentUser._id,
+                });
+                dispatch({ type: "UNFOLLOW", payload: user._id });
+            } else {
+                await axios.put(`/users/${user._id}/follow`, {
+                    user: currentUser._id,
+                });
+                dispatch({ type: "FOLLOW", payload: user._id });
+            }
+            setFollowed(!followed);
+
+        }catch(err) {
+            console.log(err)
+        }
+    }
+
+
 
     const HomeRightbar = () => {
         return (
@@ -30,9 +76,15 @@ export default function Rightbar({ user }) {
 
 
     const ProfileRightbar = () => {
-        const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+        
         return (
             <div>
+                {user.username !== currentUser.username && (
+                    <button className="rightbar__followButton" onClick={handleClick}>
+                        {followed ? "Unfollow" : "Follow"}
+                        {followed ? <Remove /> : <Add />}
+                    </button>
+                )}
                 
                     <h4 className="rightbar__rightbarTitle">User information</h4>
                     <div className="rightbar__rightbarInfo">
@@ -46,35 +98,34 @@ export default function Rightbar({ user }) {
                         </div>
                         <div className="rightbar__rightbarInfoItem">
                             <span className="rightbar__rightbarInfoKey">Relationship:</span>
-                            <span className="rightbar__rightbarInfoValue">{user.relationship === 1 ? "Single" : user.relationship === 2 ? "Married" : "-"}</span>
+                            <span className="rightbar__rightbarInfoValue">
+                                {user.relationship === 1 
+                                    ? "Single" 
+                                    : user.relationship === 2 
+                                    ? "Married" 
+                                    : "-"}
+                            </span>
                         </div>
                     </div>
                     <h4 className="rightbar__rightbarTitle">User friends</h4>
                     <div className="rightbar__rightbarFollowings">
-                        <div className="rightbar__rightbarFollowing">
-                            <img src={`${PF}person/1.jpeg`} alt="" className="rightbar__rightbarFollowingImg" />
-                            <span className="rightbar__rightbarFollowingName">John Carter</span>
-                        </div>
-                        <div className="rightbar__rightbarFollowing">
-                            <img src={`${PF}person/2.jpeg`} alt="" className="rightbar__rightbarFollowingImg" />
-                            <span className="rightbar__rightbarFollowingName">John Carter</span>
-                        </div>
-                        <div className="rightbar__rightbarFollowing">
-                            <img src={`${PF}person/3.jpeg`} alt="" className="rightbar__rightbarFollowingImg" />
-                            <span className="rightbar__rightbarFollowingName">John Carter</span>
-                        </div>
-                        <div className="rightbar__rightbarFollowing">
-                            <img src={`${PF}person/4.jpeg`} alt="" className="rightbar__rightbarFollowingImg" />
-                            <span className="rightbar__rightbarFollowingName">John Carter</span>
-                        </div>
-                        <div className="rightbar__rightbarFollowing">
-                            <img src={`${PF}person/5.jpeg`} alt="" className="rightbar__rightbarFollowingImg" />
-                            <span className="rightbar__rightbarFollowingName">John Carter</span>
-                        </div>
-                        <div className="rightbar__rightbarFollowing">
-                            <img src={`${PF}person/6.jpeg`} alt="" className="rightbar__rightbarFollowingImg" />
-                            <span className="rightbar__rightbarFollowingName">John Carter</span>
-                        </div>
+                      {friends.map((friend) => (
+                      
+                            <div className="rightbar__rightbarFollowing">
+                                <img 
+                                    src={
+                                        friend.profilePicture
+                                            ? PF+friend.profilePicture
+                                            : PF+"person/noAvatar.png"
+                                    } 
+                                    alt="" 
+                                    className="rightbar__rightbarFollowingImg" 
+                                />
+                                <span className="rightbar__rightbarFollowingName">{friend.username}</span>
+                            </div>
+                       
+                      ))}
+                       
                     </div>
               </div>  
         )
