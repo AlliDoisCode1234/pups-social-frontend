@@ -22,8 +22,8 @@ const Share = () => {
         if(file){
             const data = new FormData()
             const fileName = Date.now() + file.name
-            data.append("file",file)
-            data.append("name",fileName)
+            data.append("name", fileName)
+            data.append("file", file)
             newPost.img = fileName;
             try{
                 await axios.post("/upload", data)
@@ -31,16 +31,15 @@ const Share = () => {
                 console.log(err)
             }
         }
-
-    try{
-
-       await axios.post("/posts", newPost)
-       window.location.reload();
-    }catch(err){
-        console.log(err)
+        
+        try{
+    
+           await axios.post("/posts", newPost)
+           window.location.reload();
+        }catch(err){
+            console.log(err)
+        }
     }
-
-}
 
     return (
         <div className="share">
@@ -60,7 +59,12 @@ const Share = () => {
                         <label htmlFor="file" className="share__bottomOptionsOption">
                             <PermMedia className="share__bottomOptionsOptionIcon" htmlColor="tomato" />
                             <span className="share__bottomOptionsOptionText">Photo or Video</span>
-                            <input style={{display: "none"}} type="file" id="file" accept=".png, .jpeg, .jpg" onChange={(e) => setFile(e.target.files[0])}></input>
+                            <input 
+                                style={{display: "none"}} 
+                                type="file" id="file" 
+                                accept=".png, .jpeg, .jpg" 
+                                onChange={(e) => setFile(e.target.files[0])}     
+                            />
                         </label>
                         <div className="share__bottomOptionsOption">
                             <Label className="share__bottomOptionsOptionIcon" htmlColor="blue"/>
