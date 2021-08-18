@@ -20,7 +20,7 @@ const Profile = () => {
             setUser(res.data)
         }
         fetchUser()
-    }, [])
+    }, [username])
     return (
         <div>
             <Topbar />
