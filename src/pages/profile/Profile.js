@@ -33,7 +33,7 @@ const Profile = () => {
                                 src={
                                     user.coverPicture 
                                         ? PF + user.coverPicture 
-                                        : PF+"person/noCover.png"
+                                        : PF + "person/noCover.png"
                                     } 
                                 alt="" 
                                 className="profile__rightTopCoverImg" 
@@ -43,7 +43,7 @@ const Profile = () => {
                                 src={
                                     user.profilePicture 
                                         ? PF + user.profilePicture 
-                                        : PF+"person/noAvatar.png"
+                                        : PF + "person/noAvatar.png"
                                     } 
                                 alt="" 
                                 className="profile__rightTopUserImg" 

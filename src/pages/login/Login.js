@@ -7,14 +7,16 @@ import {CircularProgress} from "@material-ui/core"
 const Login = () => {
     const email = useRef();
     const password = useRef();
-    const {user, isFetching, dispatch} = useContext(AuthContext);
+    const { isFetching, dispatch } = useContext(AuthContext);
 
     const handleClick = (e) => {
         e.preventDefault();
-        loginCall({email: email.current.value, password: password.current.value}, dispatch)
-    }
+        loginCall( 
+            { email: email.current.value, password: password.current.value}, 
+            dispatch
+        );
+    };
 
-    console.log(user)
     return (
         <div className="login">
             <div className="login__wrapper">
@@ -49,7 +51,7 @@ const Login = () => {
                         <span className="login__wrapperRightBoxLoginForgot">Forgot Password?</span>
                         <button className="login__wrapperRightBoxRegisterButton">
                         {isFetching ? (
-                            <CircularProgress color="white" size="35px" /> 
+                            <CircularProgress color="#fff" size="35px" /> 
                         ) : (
                              "Create a New Account"
                         )}

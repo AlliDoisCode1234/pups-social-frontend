@@ -17,7 +17,7 @@ export default function Rightbar({ user }) {
     const [followed, setFollowed] = useState(
         currentUser.followings.includes(user?.id)
     );
-    // const [followed, setFollowed] = useState(false)
+    
     
 
     useEffect(() => {
@@ -30,7 +30,7 @@ export default function Rightbar({ user }) {
             }
         };
         getFriends();
-    }, [user._id])
+    }, [user])
 
 
     const handleClick = async () => {
