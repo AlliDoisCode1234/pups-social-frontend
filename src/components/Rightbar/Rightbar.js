@@ -9,6 +9,7 @@ import axios from "axios"
 
 
 
+
     
 export default function Rightbar({ user }) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -23,7 +24,7 @@ export default function Rightbar({ user }) {
     useEffect(() => {
         const getFriends = async () => {
             try {
-                const friendList = await axios.get("/users/friends/" + user._id);
+                const friendList = await axios.get("/users/friends" + user._id);
                 setFriends(friendList.data);
             } catch(err){
                 console.log(err)
@@ -112,16 +113,23 @@ export default function Rightbar({ user }) {
                       {friends.map((friend) => (
                       
                             <div className="rightbar__rightbarFollowing">
-                                <img 
+                                {/* <img 
                                     src={
                                         friend.profilePicture
-                                            ? PF+friend.profilePicture
-                                            : PF+"person/noAvatar.png"
+                                            ? PF + friend.profilePicture
+                                            : PF + "person/noAvatar.png"
                                     } 
                                     alt="" 
                                     className="rightbar__rightbarFollowingImg" 
                                 />
-                                <span className="rightbar__rightbarFollowingName">{friend.username}</span>
+                                <span className="rightbar__rightbarFollowingName">{friend.username}</span> */}
+
+                                <img
+                                    src={`${PF}person/5.jpeg`}
+                                    alt=""
+                                    className="rightbar__rightbarFollowingImg"
+                                />
+                                <span className="rightbarFollowingName">Anna Durden</span>
                             </div>
                        
                       ))}
